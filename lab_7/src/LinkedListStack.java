@@ -1,10 +1,10 @@
 import java.util.EmptyStackException;
 
-class Node {
-    int data;
+class Node<T> {
+    T data;
     Node next;
 }
-public class LinkedListStack implements StackInterface {
+public class LinkedListStack<T> implements StackInterface<T> {
     Node top;
     int size;
 
@@ -12,30 +12,30 @@ public class LinkedListStack implements StackInterface {
         top = null;
         size = 0;
     }
-    public void push(int a){
+    public void push(T a){
         Node aNewNode = new Node();
-        aNewNode.data = a;
+        aNewNode.data =  a;
 
         if( size > 0){
             aNewNode.next = top;
             top = aNewNode;
-        }else{
+        }else{ //wher the stack isempty
             top = aNewNode;
         }
 
     }
 
-    public int pop(){
-        int tmp = peek();
+    public T pop(){
+        T tmp = peek();
         top = top.next;
         return tmp;
     }
 
-    public int peek(){
+    public T peek(){
         if(size < 0 ){
             throw new EmptyStackException();
         }else{
-            int tmp = top.data;
+            T tmp = (T)top.data;
             return tmp;
         }
     }
