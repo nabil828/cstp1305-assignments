@@ -1,3 +1,4 @@
+#pragma
 #include "ArrayBasedStack.h"
 template <class T>
 ArrayBasedStack<T>::ArrayBasedStack() {
@@ -5,7 +6,7 @@ ArrayBasedStack<T>::ArrayBasedStack() {
 }
 
 template <class T>
-void ArrayBasedStack<T>::push(T newEntry) {
+ void ArrayBasedStack<T>::push(T newEntry) {
     top++;
     arr[top] = newEntry;
 }
@@ -32,3 +33,4 @@ template <class T>
 void ArrayBasedStack<T>::clear() {
     top = 0;
 }
+

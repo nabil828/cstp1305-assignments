@@ -2,5 +2,4 @@
   client.cpp
   ArrayBasedStack.h
   Generating Code...
-client.obj : error LNK2019: unresolved external symbol "public: __thiscall ArrayBasedStack<char>::ArrayBasedStack<char>(void)" (??0?$ArrayBasedStack@D@@QAE@XZ) referenced in function _main
-C:\Users\rousa\source\repos\lab7_b\Debug\lab7_b.exe : fatal error LNK1120: 1 unresolved externals
+  lab7_b.vcxproj -> C:\Users\rousa\source\repos\lab7_b\Debug\lab7_b.exe

@@ -142,7 +142,10 @@
     <ClInclude Include="StackInterface.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ArrayBasedStackImp.cpp" />
+    <ClCompile Include="ArrayBasedStackImp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="client.cpp" />
     <ClCompile Include="ArrayBasedStack.h" />
   </ItemGroup>
