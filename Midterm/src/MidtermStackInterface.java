@@ -22,4 +22,10 @@ public interface MidtermStackInterface <T>{
 
     // postcondition: return the size of the stack
     int getsize();
+
+    //finds  the location of an element x in the stack.
+    //                     The first element in the stack has location number one. The
+    //                     second pushed element has location number two and so on.
+    // if not exist may be return -1
+    int find(T x);
 }

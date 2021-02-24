@@ -26,7 +26,7 @@ public class MidtermStackClass<T> implements MidtermStackInterface<T>{
     boolean itemfound(T a){
         Node iterartor = front;
         while(iterartor!= back){
-            T tmp =(T)front.data;
+            T tmp =(T)iterartor.data;
             if(tmp == a)
                 return true;
             iterartor = iterartor.next;
@@ -86,7 +86,25 @@ public class MidtermStackClass<T> implements MidtermStackInterface<T>{
         return  size;
     }
 
+    public int find (T x){
+        Node iterartor = front;
+        if(front == back && front.data == x)
+            return 1;
 
+        int counter = 0;
+        while(iterartor!= back){
+            T tmp =(T)iterartor.data;
+            if(tmp == x)
+                return size - counter;
+            iterartor = iterartor.next; counter++;
+        }
+        T tmp =(T)iterartor.data;
+        if(tmp == x)
+            return size - counter;
+
+
+        return -1;
+    }
     public static void main(String args[])
     {
         MidtermStackInterface s = new MidtermStackClass();
@@ -118,6 +136,17 @@ public class MidtermStackClass<T> implements MidtermStackInterface<T>{
         catch (EmptyStackException e){
             System.out.println(e.getMessage());
         }
+
+
+        System.out.println("finding ... "); //2
+        System.out.println(s.find(66)); //-1
+
+        System.out.println(s.find(7)); //1
+
+        System.out.println(s.find(6)); //2
+
+
+        System.out.println(s.find(100)); // 4
 
     }
 
