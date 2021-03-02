@@ -9,8 +9,9 @@ class Node{
     }
 }
 
-
-public class MidtermStackClass { // this is our ADT
+// ADT:
+// IT is a Stack ADT using circular linked list
+public class MidtermStackClass implements StackInterface{ // this is our ADT
     Node front; // data member
     Node back;
     int size;
@@ -19,7 +20,9 @@ public class MidtermStackClass { // this is our ADT
     MidtermStackClass(){
         size = 0;
     }
-    void push(int a){ //member function O(n)
+
+
+    public void push(int a){ //member function O(n)
         Node aNewNode = new Node(a);
 
         if(size == 0){ // to if it has at least one item
@@ -55,19 +58,19 @@ public class MidtermStackClass { // this is our ADT
         return -1;
     }
 
-    int pop(){ //member function // O(1)
+    public int pop(){ //member function // O(1)
         int tmp = front.data;
         front = front.next;
         back.next = front;
         size--;
         return tmp;
     }
-    int peek(){ //member function O(1)
+    public int peek(){ //member function O(1)
         return front.data;
     }
 
 
-    int peek1(){
+    public int peek1(){
         return back.data; // O(1) when would it be O(n)?
     }
 
