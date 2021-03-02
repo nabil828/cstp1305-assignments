@@ -18,7 +18,7 @@ public class MidtermStackClass { // this is our ADT
     MidtermStackClass(){
         size = 0;
     }
-    void push(int a){ //member function
+    void push(int a){ //member function O(n)
         Node aNewNode = new Node(a);
 
         if(size == 0){ // to if it has at least one item
@@ -36,7 +36,7 @@ public class MidtermStackClass { // this is our ADT
 
   }
 
-     public int find(int a) {
+     public int find(int a) { // O(n)
         // loop
         Node iterator = top;
         int location = size;
@@ -50,19 +50,19 @@ public class MidtermStackClass { // this is our ADT
         return -1;
     }
 
-    int pop(){ //member function
+    int pop(){ //member function // O(1)
         int tmp = top.data;
         top = top.next;
         size--;
         return tmp;
     }
-    int peek(){ //member function
+    int peek(){ //member function O(1)
         return top.data;
     }
 
 
     int peek1(){
-        return first.data;
+        return first.data; // O(1) when would it be O(n)?
     }
 
 
