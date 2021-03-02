@@ -73,9 +73,15 @@ public class MidtermStackClass { // this is our ADT
 
         int tmp = myFirstStack.find(10); // should be 1
 
-        System.out.println(myFirstStack.peek()); // now this should return 6
-        System.out.println(myFirstStack.pop()); // 6
-        System.out.println(myFirstStack.peek()); // now this should return 5
+        // The next four pushes should be ignored
+        myFirstStack.push(10);
+        myFirstStack.push(10);
+        myFirstStack.push(10);
+        myFirstStack.push(10);
+
+        System.out.println(myFirstStack.peek()); // now this should return 40
+        System.out.println(myFirstStack.pop()); // 40
+        System.out.println(myFirstStack.peek()); // now this should return 20
 
     }
 }
