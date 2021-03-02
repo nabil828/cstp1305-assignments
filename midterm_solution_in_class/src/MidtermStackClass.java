@@ -13,6 +13,7 @@ class Node{
 public class MidtermStackClass { // this is our ADT
     Node top; // data member
     int size;
+    Node first;
 
     MidtermStackClass(){
         size = 0;
@@ -23,6 +24,7 @@ public class MidtermStackClass { // this is our ADT
         if(size == 0){ // to if it has at least one item
             top = aNewNode;
             size++;
+            first = top;
         }else{
             // may bt it is better to che2ck for duplicate here
             if(find(a) == -1 ) { // this means that `a` has a no valid location (1, 2, 3, ...), which means it does no exist already in the stack
@@ -31,6 +33,7 @@ public class MidtermStackClass { // this is our ADT
                 size++;
             }// if they do exist
         }
+
   }
 
      public int find(int a) {
@@ -58,6 +61,11 @@ public class MidtermStackClass { // this is our ADT
     }
 
 
+    int peek1(){
+        return first.data;
+    }
+
+
     public static void main(String arg[]){
         Node node1 = new Node(4);
         Node node2 = new Node(5);
@@ -82,6 +90,7 @@ public class MidtermStackClass { // this is our ADT
         System.out.println(myFirstStack.peek()); // now this should return 40
         System.out.println(myFirstStack.pop()); // 40
         System.out.println(myFirstStack.peek()); // now this should return 20
+        System.out.println(myFirstStack.peek1()); // now this should return 10
 
     }
 }
