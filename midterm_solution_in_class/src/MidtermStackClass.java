@@ -11,7 +11,8 @@ class Node{
 
 
 public class MidtermStackClass { // this is our ADT
-    Node top; // data member
+    Node front; // data member
+    Node back;
     int size;
     Node first;
 
@@ -22,14 +23,15 @@ public class MidtermStackClass { // this is our ADT
         Node aNewNode = new Node(a);
 
         if(size == 0){ // to if it has at least one item
-            top = aNewNode;
+            front = aNewNode;
+            back = aNewNode;
             size++;
-            first = top;
         }else{
             // may bt it is better to che2ck for duplicate here
             if(find(a) == -1 ) { // this means that `a` has a no valid location (1, 2, 3, ...), which means it does no exist already in the stack
-                aNewNode.next = top;
-                top = aNewNode;
+                aNewNode.next = front;
+                front = aNewNode;
+                back.next = front;
                 size++;
             }// if they do exist
         }
@@ -38,31 +40,35 @@ public class MidtermStackClass { // this is our ADT
 
      public int find(int a) { // O(n)
         // loop
-        Node iterator = top;
+        Node iterator = front;
         int location = size;
-        while(iterator != null){
+        while(iterator != back){
             if(iterator.data == a)
                 return location;
             location--;
             iterator = iterator.next;
         }
+        // I still to have to check the back node as well
+         if(back.data == a)
+             return location;
 
         return -1;
     }
 
     int pop(){ //member function // O(1)
-        int tmp = top.data;
-        top = top.next;
+        int tmp = front.data;
+        front = front.next;
+        back.next = front;
         size--;
         return tmp;
     }
     int peek(){ //member function O(1)
-        return top.data;
+        return front.data;
     }
 
 
     int peek1(){
-        return first.data; // O(1) when would it be O(n)?
+        return back.data; // O(1) when would it be O(n)?
     }
 
 
