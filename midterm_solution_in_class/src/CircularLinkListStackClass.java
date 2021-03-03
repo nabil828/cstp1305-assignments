@@ -1,7 +1,7 @@
 // we need this to create a linked list
 class Node<T> {
     T data; //data member
-    Node next; //data member
+    Node<T> next; //data member
 
     Node(T x) { // constuctor
         data = x;
@@ -12,10 +12,10 @@ class Node<T> {
 // ADT:
 // IT is a Stack ADT using circular linked list
 public class CircularLinkListStackClass<T> implements StackInterface<T> { // this is our ADT
-    Node front; // data member
-    Node back;
+    Node<T> front; // data member
+    Node<T> back;
     int size;
-    Node first;
+    Node<T> first;
 
     CircularLinkListStackClass() {
         size = 0;
@@ -29,7 +29,7 @@ public class CircularLinkListStackClass<T> implements StackInterface<T> { // thi
 
 
         }
-        Node aNewNode = new Node(a);
+        Node<T> aNewNode = new Node<>(a);
 
         if (size == 0) { // to if it has at least one item
             front = aNewNode;
@@ -49,7 +49,7 @@ public class CircularLinkListStackClass<T> implements StackInterface<T> { // thi
 
     public int find(T a) { // O(n)
         // loop
-        Node iterator = front;
+        Node<T> iterator = front;
         int location = size;
         while (iterator != back) {
             if (iterator.data == a)
@@ -65,7 +65,7 @@ public class CircularLinkListStackClass<T> implements StackInterface<T> { // thi
     }
 
     public T pop() { //member function // O(1)
-        T tmp = (T) front.data;
+        T tmp = front.data;
         front = front.next;
         back.next = front;
         size--;
@@ -73,12 +73,12 @@ public class CircularLinkListStackClass<T> implements StackInterface<T> { // thi
     }
 
     public T peek() { //member function O(1)
-        return (T) front.data;
+        return front.data;
     }
 
 
     public T peek1() {
-        return (T) back.data; // O(1) when would it be O(n)?
+        return back.data; // O(1) when would it be O(n)?
     }
 
     public int get_size() {
@@ -86,8 +86,8 @@ public class CircularLinkListStackClass<T> implements StackInterface<T> { // thi
     }
 
     public static void main(String arg[]) {
-        Node node1 = new Node(4);
-        Node node2 = new Node(5);
+        Node<Integer> node1 = new Node<>(4);
+        Node<Integer> node2 = new Node<>(5);
         node2.next = node1; // now this is a linked list?
 
         // Testing

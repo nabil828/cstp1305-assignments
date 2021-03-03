@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LinkListStackClass<T> implements StackInterface<T> {
 
-    Node top; // data member
+    Node<T> top; // data member
     int size;
-    Node first;
+    Node<T> first;
 
     LinkListStackClass() {
         size = 0;
@@ -18,7 +19,7 @@ public class LinkListStackClass<T> implements StackInterface<T> {
 
 
         }
-        Node aNewNode = new Node(a);
+        Node<T> aNewNode = new Node<>(a);
 
         if (size == 0) { // to if it has at least one item
             top = aNewNode;
@@ -37,7 +38,7 @@ public class LinkListStackClass<T> implements StackInterface<T> {
 
     public int find(T a) { // O(n)
         // loop
-        Node iterator = top;
+        Node<T> iterator = top;
         int location = size;
         while (iterator != null) {
             if (iterator.data == a)
@@ -50,19 +51,19 @@ public class LinkListStackClass<T> implements StackInterface<T> {
     }
 
     public T pop() { //member function // O(1)
-        T tmp = (T) top.data;
+        T tmp = top.data;
         top = top.next;
         size--;
         return tmp;
     }
 
     public T peek() { //member function O(1)
-        return (T) top.data;
+        return  top.data;
     }
 
 
     public T peek1() {
-        return (T) first.data; // O(1) when would it be O(n)?
+        return  first.data; // O(1) when would it be O(n)?
     }
 
 
@@ -72,8 +73,8 @@ public class LinkListStackClass<T> implements StackInterface<T> {
 
 
     public static void main(String arg[]) {
-        Node node1 = new Node(4);
-        Node node2 = new Node(5);
+        Node<Integer> node1 = new Node<>(4);
+        Node<Integer> node2 = new Node<>(5);
         node2.next = node1; // now this is a linked list?
 
         // Testing
