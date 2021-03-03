@@ -11,7 +11,13 @@ public class LinkListStackClass<T> implements StackInterface<T> {
         size = 0;
     }
 
-    public void push(T a) { //member function O(n)
+    public void push(T a) throws FullStackException { //member function O(n)
+        if (size == LIMIT) {
+
+            throw new FullStackException(); // a checked exception
+
+
+        }
         Node aNewNode = new Node(a);
 
         if (size == 0) { // to if it has at least one item
@@ -44,52 +50,58 @@ public class LinkListStackClass<T> implements StackInterface<T> {
     }
 
     public T pop() { //member function // O(1)
-        T tmp = (T)top.data;
+        T tmp = (T) top.data;
         top = top.next;
         size--;
         return tmp;
     }
 
     public T peek() { //member function O(1)
-        return (T)top.data;
+        return (T) top.data;
     }
 
 
     public T peek1() {
-        return (T)first.data; // O(1) when would it be O(n)?
+        return (T) first.data; // O(1) when would it be O(n)?
     }
 
 
-    public int get_size(){return size;}
+    public int get_size() {
+        return size;
+    }
 
 
-    public static void main(String arg[]){
+    public static void main(String arg[]) {
         Node node1 = new Node(4);
         Node node2 = new Node(5);
         node2.next = node1; // now this is a linked list?
 
         // Testing
         StackInterface<Integer> myFirstStack = new LinkListStackClass<Integer>();
+        try {
 
-        myFirstStack.push(10);
-        myFirstStack.push(30);
-        myFirstStack.push(20);
-        myFirstStack.push(40);
+            myFirstStack.push(10);
+            myFirstStack.push(30);
+            myFirstStack.push(20);
+            myFirstStack.push(40);
 
-        int tmp = myFirstStack.find(10); // should be 1
+            int tmp = myFirstStack.find(10); // should be 1
 
-        // The next four pushes should be ignored
-        myFirstStack.push(10);
-        myFirstStack.push(10);
-        myFirstStack.push(10);
-        myFirstStack.push(10);
+            // The next four pushes should be ignored
+            myFirstStack.push(10);
+            myFirstStack.push(10);
+            myFirstStack.push(10);
+            myFirstStack.push(10);
 
-        System.out.println(myFirstStack.peek()); // now this should return 40
-        System.out.println(myFirstStack.pop()); // 40
-        System.out.println(myFirstStack.peek()); // now this should return 20
-        System.out.println(myFirstStack.peek1()); // now this should return 10
+            System.out.println(myFirstStack.peek()); // now this should return 40
+            System.out.println(myFirstStack.pop()); // 40
+            System.out.println(myFirstStack.peek()); // now this should return 20
+            System.out.println(myFirstStack.peek1()); // now this should return 10
 
 
+        } catch (FullStackException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
