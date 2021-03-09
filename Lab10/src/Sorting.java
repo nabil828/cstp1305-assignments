@@ -1,6 +1,26 @@
 import java.util.Arrays;
 
 public class Sorting {
+    // post-condition: this function print out the sorted array of the input
+    // this function should not alter the original array
+    static void insertion_sort(int arr[]){
+
+        for(int current_index_unsorted = 0 ; current_index_unsorted < arr.length; current_index_unsorted++){
+            int tmp = arr[current_index_unsorted];
+            // look up step, trying to find where to insert the current item
+            int iterator = current_index_unsorted;
+            while( iterator > 0 && tmp < arr[iterator -1]){
+                arr[iterator] = arr[iterator -1];
+                iterator --;
+            }
+            arr[iterator]= tmp; //Insertion step
+        }
+
+
+        for(int x = 0 ; x < arr.length; x++){
+            System.out.print(arr[x] + " ");
+        }
+    }
 
     // post-condition: this function print out the sorted array of the input
     // this function should not alter the original array
@@ -9,7 +29,7 @@ public class Sorting {
         int smallest_index;
         for(int i = 0; i < arr.length ; i++){
             smallest_index = i;
-            for (int j = i + 1; j < arr.length ; j++){
+            for (int j = i + 1 ; j < arr.length ; j++){
                 if(arr[j] < arr[smallest_index]){
                     smallest_index = j;
                 }
@@ -21,7 +41,7 @@ public class Sorting {
         }
 
         for(int x = 0 ; x < arr.length; x++){
-            System.out.println(arr[x]);
+            System.out.print(arr[x] + " ");
         }
 
 
@@ -30,6 +50,6 @@ public class Sorting {
     public static void main (String arf[]){
         System.out.println("Hi");
         int [] arr = {23, 41, 33, 81, 07, 19, 11, 45};
-        selection_sort(arr);
+        insertion_sort(arr);
     }
 }
