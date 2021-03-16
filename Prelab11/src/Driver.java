@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 class ExtendedAddress{
     String email;
@@ -24,7 +26,36 @@ public class Driver {
         Integer arr1 [] = {1, 2, 3, 4, 5};
         Integer arr2 [] = {4, 5, 6, 7, 8};
 //        intersection_of_two_arrays(arr1, arr2); // should be 4, 5
-        union_of_two_arrays(arr1, arr2); // should be 1, 2, 3, 4, 5, 6, 7, 8,
+//        union_of_two_arrays(arr1, arr2); // should be 1, 2, 3, 4, 5, 6, 7, 8,
+//        intersection_of_two_arrays_using_sets(arr1, arr2);
+        union_of_two_arrays_using_sets(arr1, arr2);
+    }
+
+    private static void union_of_two_arrays_using_sets(Integer[] arr1, Integer[] arr2) {
+        Set<Integer> tmp = new HashSet<>();
+        for (int i = 0 ; i < arr1.length; i++){
+            tmp.add(arr1[i]);
+        }
+        for (int i = 0 ; i < arr2.length; i++){
+            tmp.add(arr2[i]);
+        }
+        for (Integer i : tmp){
+            System.out.println(i);
+        }
+
+    }
+
+    private static void intersection_of_two_arrays_using_sets(Integer[] arr1, Integer[] arr2) {
+        Set<Integer> tmp = new HashSet<>();
+        for (int i = 0 ; i < arr1.length; i++){
+            tmp.add(arr1[i]);
+        }
+        for (int i = 0 ; i < arr2.length; i++){
+         if(tmp.contains(arr2[i])){
+             System.out.println(arr2[i]);
+         }
+
+        }
     }
 
     private static void union_of_two_arrays(Integer[] arr1, Integer[] arr2) {
