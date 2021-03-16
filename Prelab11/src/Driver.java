@@ -29,6 +29,9 @@ public class Driver {
 //        union_of_two_arrays(arr1, arr2); // should be 1, 2, 3, 4, 5, 6, 7, 8,
 //        intersection_of_two_arrays_using_sets(arr1, arr2);
         union_of_two_arrays_using_sets(arr1, arr2);
+
+
+        ExtendedAddress []arr_of_objects;
     }
 
     private static void union_of_two_arrays_using_sets(Integer[] arr1, Integer[] arr2) {
@@ -51,7 +54,7 @@ public class Driver {
             tmp.add(arr1[i]);
         }
         for (int i = 0 ; i < arr2.length; i++){
-         if(tmp.contains(arr2[i])){
+         if(tmp.contains(arr2[i])){ // 5
              System.out.println(arr2[i]);
          }
 
