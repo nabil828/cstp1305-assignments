@@ -1,52 +1,49 @@
 public class MergeSortRecursive {
-    static void mergesort(Integer [] arr,  int firstIndex, int lastIndex){
+    static void mergesort(Integer [] arr,  Integer[] tmpArr, int firstIndex, int lastIndex){
 
         if(firstIndex < lastIndex){
             int middle = (firstIndex + lastIndex )/ 2;
-            mergesort(arr, firstIndex, middle);
-            mergesort(arr, middle + 1,lastIndex );
-            merge(arr,  firstIndex, middle, middle + 1, lastIndex);
+            mergesort(arr, tmpArr, firstIndex, middle);
+            mergesort(arr, tmpArr,middle + 1,lastIndex );
+            merge(arr,  tmpArr, firstIndex, middle, middle + 1, lastIndex);
+            System.arraycopy(tmpArr, firstIndex, arr, firstIndex, lastIndex - firstIndex + 1 );
         }
     }
-    static void merge(Integer [] arr,  int firstArrayFirstIndex, int firstArrayLastIndex,
+    static void merge(Integer [] arr, Integer [] tmpArr,  int firstArrayFirstIndex, int firstArrayLastIndex,
                       int secondArrayFirstIndex, int secondArrayLastIndex){
-        Integer tmpArr[]= new Integer[arr.length];
-        for(int i = firstArrayFirstIndex ; i <= firstArrayLastIndex ;i++){
-            tmpArr[i] = arr[i];
-        }
-        for(int i = secondArrayFirstIndex ; i <= secondArrayLastIndex ;i++){
-            tmpArr[i] = arr[i];
-        }
+
         int index = firstArrayFirstIndex;
         while(firstArrayFirstIndex <= firstArrayLastIndex && secondArrayFirstIndex <= secondArrayLastIndex){
             // equality is for merging arrays of size 1
-            if(tmpArr[secondArrayFirstIndex] < tmpArr[firstArrayFirstIndex]) {
-                arr[index] = tmpArr[secondArrayFirstIndex];
+            if(arr[secondArrayFirstIndex] < arr[firstArrayFirstIndex]) {
+                tmpArr[index] = arr[secondArrayFirstIndex];
                 secondArrayFirstIndex++;
-            }else if(tmpArr[firstArrayFirstIndex] < tmpArr[secondArrayFirstIndex]){
-                arr[index] = tmpArr[firstArrayFirstIndex];
+            }else if(arr[firstArrayFirstIndex] < arr[secondArrayFirstIndex]){
+                tmpArr[index] = arr[firstArrayFirstIndex];
                 firstArrayFirstIndex++;
             }
             index++;
         }
         while(firstArrayFirstIndex <= firstArrayLastIndex){
-            arr[index] = tmpArr[firstArrayFirstIndex];
+            tmpArr[index] = arr[firstArrayFirstIndex];
             firstArrayFirstIndex++;
             index++;
         }
         while(secondArrayFirstIndex <= secondArrayLastIndex){
-            arr[index] = tmpArr[secondArrayFirstIndex];
+            tmpArr[index] = arr[secondArrayFirstIndex];
             secondArrayFirstIndex++;
             index++;
         }
+
+
     }
 
     public static void main(String args[]){
         Integer []arr = {2, 1, 4, 3};
-        //Integer []tmpArr = new Integer[arr.length];
-        mergesort(arr,0, arr.length - 1);
+        Integer []tmpArr = new Integer[arr.length];
+        mergesort(arr, tmpArr, 0, arr.length - 1);
 
-        for (Integer x: arr){
+        for (Integer x: tmpArr){
             System.out.print(x);
         }
 
@@ -55,10 +52,10 @@ public class MergeSortRecursive {
         System.out.println();
 
         Integer []arr2 = {4, 3 , 2, 1, 0};
-        //Integer []tmpArr = new Integer[arr.length];
-        mergesort(arr2,0, arr2.length - 1);
+        Integer []tmpArr2 = new Integer[arr2.length];
+        mergesort(arr2, tmpArr2, 0, arr2.length - 1);
 
-        for (Integer x: arr2){
+        for (Integer x: tmpArr2){
             System.out.print(x);
         }
     }
