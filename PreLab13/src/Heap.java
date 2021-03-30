@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Heap {
     int []arr;
     int last_index = 0;
@@ -24,10 +26,10 @@ public class Heap {
         last_index++;
     }
 
-    void remove(){
+    int remove(){
         //        step 1
         //        Make a temporary copy of the root’s data
-//        int tmp = arr[0];
+        int tmp = arr[0];
 
         // Step 2
         //        Similarly to the insertion algorithm, first ensure that the heap remains complete
@@ -55,8 +57,8 @@ public class Heap {
             left_child_index = 2 * iterator  + 1;
             right_child_index = 2 * iterator  + 2;
         }
-    last_index--;
-
+        last_index--;
+        return tmp;
     }
 //   bubbleUP(int index); // todo
 
@@ -72,7 +74,25 @@ public class Heap {
     int peek(){
         return arr[0];
     }
+    boolean isEmpty(){
+        return  last_index ==0;
+    }
 
+    void printAll(){
+        // 1 - copy the array into a temproray array
+        int []tmpArr = new int[this.arr.length];
+        for(int i = 0 ; i < this.arr.length; i++){
+            tmpArr[i] = arr[i];
+        }
+        // 2- repeatedly call remove() untill there are no elements left
+        while(!isEmpty()){
+            System.out.println(this.remove());
+        }
+        // 3- restore the tree or the array
+        for(int i =0 ; i<tmpArr.length; i++){
+            this.insert(tmpArr[i]);
+        }
+    }
 
     public static void main(String args[]){
 
@@ -91,8 +111,8 @@ public class Heap {
         obj.insert(17);
         obj.insert(21);
         obj.insert(29);
-        System.out.println(obj.peek());// return 94
-        obj.remove();
+//        System.out.println(obj.peek());// return 94
+//        obj.remove();
         obj.printAll(); // lab work: implement this method without destroying the heap array
 
     }
