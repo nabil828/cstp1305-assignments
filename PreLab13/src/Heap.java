@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Heap {
     int []arr;
-    int last_index = 0;
+    int last_index = -1;
     Heap(){
         arr = new int[20]; // todo: enlarge()
     }
@@ -11,7 +11,8 @@ public class Heap {
         //todo
     }
     void insert(int x){
-        // first step: insert at the last index
+        // first step: insert at the end of the array index
+        last_index++;
         arr[last_index] = x;
 
         // second step: Fix the partial ordering
@@ -23,7 +24,7 @@ public class Heap {
             iterator = parent_index;
             parent_index = (int) Math.floor((parent_index* 1.0 - 1 )  / 2);
         }
-        last_index++;
+//        last_index++;
     }
 
     int remove(){
@@ -35,7 +36,7 @@ public class Heap {
         //        Similarly to the insertion algorithm, first ensure that the heap remains complete
         //        Replace the root node with the right-most leaf
         //        i.e. the highest (occupied) index in the array
-        arr[0] = arr[last_index - 1];
+        arr[0] = arr[last_index];
 
         // Step 3
         //        Swap the new root with its largest valued child until the partially ordered property holds
@@ -75,7 +76,7 @@ public class Heap {
         return arr[0];
     }
     boolean isEmpty(){
-        return  last_index ==0;
+        return  last_index == 0;
     }
 
     void printAll(){
@@ -94,6 +95,11 @@ public class Heap {
         }
     }
 
+    void heapSort(){
+        while(!isEmpty()){
+            System.out.println(this.remove());
+        }
+    }
     public static void main(String args[]){
 
 
@@ -113,7 +119,7 @@ public class Heap {
         obj.insert(29);
 //        System.out.println(obj.peek());// return 94
 //        obj.remove();
-        obj.printAll(); // lab work: implement this method without destroying the heap array
-
+//        obj.printAll(); // lab work: implement this method without destroying the heap array
+        obj.heapSort();
     }
 }
